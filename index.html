@@ -1,300 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semáforo y Carro</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="styles.css" />
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    <script>
-        $(document).ready(function () {
-            $("button").click(function () {
-                $(".m1").hide(1000);
-            });
-        });
-    </script>
+body{
+    background:#d8dde2;
+    overflow:hidden;
+}
+
+/* Escenario */
+.CASE{
+    width:100%;
+    height:500px;
+    background:url(ciudad.jpg);
+    background-size:cover;
+    position:relative;
+}
+
+/* Semáforo */
+.semaforo{
+    width:90px;
+    background:#222;
+    border-radius:10px;
+    padding:10px;
+    position:absolute;
+    left:50%;
+    top:80px;
+    transform:translateX(-50%);
+}
+
+.luz{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    margin:10px auto;
+    opacity:.2;
+}
+
+/* Luces */
+.rojo{
+    background:red;
+    animation:rojo 9s infinite;
+}
+
+.amarillo{
+    background:yellow;
+    animation:amarillo 9s infinite;
+}
+
+.verde{
+    background:lime;
+    animation:verde 9s infinite;
+}
+
+/* Carro */
+.carro{
+    width:220px;
+    position:absolute;
+    bottom:40px;
+    left:0;
+    animation:mover 9s infinite linear;
+}
+
+/* Animación del carro */
+@keyframes mover{
+
+    /* Avanza hasta el semáforo */
+    0%{
+        left:0;
+    }
+
+    30%{
+        left:42%;
+    }
+
+    /* Se queda esperando */
+    60%{
+        left:42%;
+    }
+
+    /* Cuando el semáforo está verde continúa */
+    100%{
+        left:100%;
+    }
+}
+
+/* Semáforo */
+
+@keyframes rojo{
+    0%,33%{
+        opacity:1;
+    }
+    34%,100%{
+        opacity:.2;
+    }
+}
+
+@keyframes amarillo{
+    0%,33%{
+        opacity:.2;
+    }
+    34%,50%{
+        opacity:1;
+    }
+    51%,100%{
+        opacity:.2;
+    }
+}
+
+@keyframes verde{
+    0%,50%{
+        opacity:.2;
+    }
+    51%,100%{
+        opacity:1;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- CONTENEDOR PRINCIPAL -->
-    <div class="container">
+<div class="CASE">
 
-        <h1>¿Qué es un stakeholder?</h1>
-
-        <button>Hide</button>
-
-        <img class="m1" src="m1.jpeg" alt="m1" width="300" height="250" />
-
-        <!-- DEFINICIÓN DE STAKEHOLDER -->
-        <p>
-            Un stakeholder (también llamado parte interesada o grupo de interés) es cualquier persona, grupo u
-            organización que puede influir, verse afectado o tener interés en las actividades, decisiones o resultados
-            de un proyecto, empresa o institución.
-        </p>
-
-        <p>
-            El concepto fue desarrollado por el profesor R. Edward Freeman en 1984 y hoy es fundamental en la
-            administración de empresas y la gestión de proyectos.
-        </p>
-
-        <p><strong>Características de un stakeholder:</strong></p>
-
-        <!-- CARACTERÍSTICAS -->
-        <div class="A">
-            <p>• Tener interés en el éxito o fracaso del proyecto.</p>
-            <p>• Influir en la toma de decisiones.</p>
-            <p>• Aportar recursos (dinero, conocimiento, materiales o trabajo).</p>
-            <p>• Beneficiarse o verse perjudicado por los resultados.</p>
-            <p>• Tener diferentes niveles de poder, influencia e interés.</p>
-        </div>
-
-        <!-- CLASIFICACIÓN 1 -->
-        <h2>Clasificación 1: Según su relación con la organización</h2>
-
-        <table>
-            <tr>
-                <th>Tipo</th>
-                <th>¿Quiénes son?</th>
-                <th>Ejemplos</th>
-            </tr>
-
-            <tr>
-                <td>Internos</td>
-                <td>Pertenecen a la organización.</td>
-                <td>Gerentes, empleados, socios, accionistas.</td>
-            </tr>
-
-            <tr>
-                <td>Externos</td>
-                <td>No pertenecen a la organización, pero tienen relación con ella.</td>
-                <td>Clientes, proveedores, gobierno, comunidad, bancos.</td>
-            </tr>
-        </table>
-
-        <!-- CLASIFICACIÓN 2 -->
-        <h2>Clasificación 2: Según su poder e interés</h2>
-
-        <table>
-            <tr>
-                <th>Poder</th>
-                <th>Interés</th>
-                <th>¿Cómo gestionarlo?</th>
-            </tr>
-
-            <tr>
-                <td>Alto</td>
-                <td>Alto</td>
-                <td>Gestionar de cerca y mantener comunicación constante.</td>
-            </tr>
-
-            <tr>
-                <td>Alto</td>
-                <td>Bajo</td>
-                <td>Mantener satisfechos.</td>
-            </tr>
-
-            <tr>
-                <td>Bajo</td>
-                <td>Alto</td>
-                <td>Mantener informados.</td>
-            </tr>
-        </table>
-
-        <!-- CLASIFICACIÓN 3 -->
-        <h2>Clasificación 3: Según su importancia</h2>
-
-        <table>
-            <tr>
-                <th>Tipo</th>
-                <th>Descripción</th>
-                <th>Ejemplos</th>
-            </tr>
-
-            <tr>
-                <td>Primarios</td>
-                <td>Son indispensables para el proyecto.</td>
-                <td>Clientes, empleados, inversionistas.</td>
-            </tr>
-
-            <tr>
-                <td>Secundarios</td>
-                <td>Influyen, pero no participan directamente.</td>
-                <td>Comunidad, medios de comunicación, competidores.</td>
-            </tr>
-        </table>
-
-        <!-- REQUERIMIENTOS FUNCIONALES -->
-        <h2>Requerimientos Funcionales (RF)</h2>
-
-        <p>
-            Un requerimiento funcional (RF) indica lo que el sistema debe hacer.
-            Es decir, son las funciones o acciones que tendrá el software.
-            <br />
-            <br />
-            <strong>RF = Función = ¿Qué hace el sistema?</strong>
-        </p>
-
-        <div class="requerimientos">
-
-            <div class="rf">
-                <h3>RF-001</h3>
-                <p>El sistema debe permitir registrar usuarios.</p>
-            </div>
-
-            <div class="rf">
-                <h3>RF-002</h3>
-                <p>El usuario podrá iniciar sesión con correo y contraseña.</p>
-            </div>
-
-            <div class="rf">
-                <h3>RF-003</h3>
-                <p>El sistema permitirá buscar libros por título.</p>
-            </div>
-
-            <div class="rf">
-                <h3>RF-004</h3>
-                <p>El usuario podrá prestar un libro.</p>
-            </div>
-
-            <div class="rf">
-                <h3>RF-005</h3>
-                <p>El administrador podrá eliminar usuarios.</p>
-            </div>
-
-        </div>
-
-        <!-- REQUERIMIENTOS NO FUNCIONALES -->
-        <h2>Requerimientos No Funcionales (RNF)</h2>
-
-        <p>
-            Un requerimiento no funcional (RNF) indica cómo debe funcionar el sistema.
-            No agrega nuevas funciones, sino que establece las condiciones de calidad del software.
-            <br />
-            <br />
-            <strong>RNF = Calidad = ¿Cómo debe funcionar el sistema?</strong>
-        </p>
-
-        <div class="requerimientos">
-
-            <div class="rnf">
-                <h3>RNF-001</h3>
-                <p>El sistema debe cargar en menos de 2 segundos.</p>
-            </div>
-
-            <div class="rnf">
-                <h3>RNF-002</h3>
-                <p>Las contraseñas deben almacenarse cifradas.</p>
-            </div>
-
-            <div class="rnf">
-                <h3>RNF-003</h3>
-                <p>El sistema debe estar disponible el 99,9 % del tiempo.</p>
-            </div>
-
-            <div class="rnf">
-                <h3>RNF-004</h3>
-                <p>Debe funcionar en computadores y celulares.</p>
-            </div>
-
-            <div class="rnf">
-                <h3>RNF-005</h3>
-                <p>La interfaz debe ser fácil de usar.</p>
-            </div>
-
-        </div>
-
-        <div class="fr">
-
-            <table>
-
-                <tr>
-                    <th>RNF</th>
-                    <th>¿Qué es?</th>
-                    <th>Ejemplo</th>
-                </tr>
-
-                <tr>
-                    <td>Rendimiento</td>
-                    <td>Qué tan rápido funciona el sistema.</td>
-                    <td>Carga en menos de 3 segundos.</td>
-                </tr>
-
-                <tr>
-                    <td>Seguridad</td>
-                    <td>Protege la información.</td>
-                    <td>Inicio de sesión con contraseña.</td>
-                </tr>
-
-                <tr>
-                    <td>Usabilidad</td>
-                    <td>Fácil de usar.</td>
-                    <td>Botones claros y visibles.</td>
-                </tr>
-
-                <tr>
-                    <td>Accesibilidad</td>
-                    <td>Puede ser usado por todos.</td>
-                    <td>Compatible con lectores de pantalla.</td>
-                </tr>
-
-                <tr>
-                    <td>Disponibilidad</td>
-                    <td>Tiempo que el sistema está activo.</td>
-                    <td>Disponible el 99% del tiempo.</td>
-                </tr>
-
-                <tr>
-                    <td>Escalabilidad</td>
-                    <td>Soporta más usuarios.</td>
-                    <td>Hasta 1000 usuarios.</td>
-                </tr>
-
-                <tr>
-                    <td>Mantenibilidad</td>
-                    <td>Fácil de actualizar.</td>
-                    <td>Código organizado.</td>
-                </tr>
-
-                <tr>
-                    <td>Portabilidad</td>
-                    <td>Funciona en varios dispositivos.</td>
-                    <td>Windows, Android e iOS.</td>
-                </tr>
-
-                <tr>
-                    <td>Compatibilidad</td>
-                    <td>Compatible con otros sistemas.</td>
-                    <td>Chrome, Edge y Firefox.</td>
-                </tr>
-
-                <tr>
-                    <td>Confiabilidad</td>
-                    <td>Funciona sin errores.</td>
-                    <td>No pierde información.</td>
-                </tr>
-
-                <tr>
-                    <td>Restricciones tecnológicas</td>
-                    <td>Tecnologías obligatorias.</td>
-                    <td>HTML, CSS y JavaScript.</td>
-                </tr>
-
-            </table>
-
-            <div class="indicador">
-                <span class="txt-mobile">📱 MOBILE (&lt; 601px)</span>
-                <span class="txt-tablet">📟 TABLET (601–900px)</span>
-                <span class="txt-desktop">🖥️ DESKTOP (&gt; 900px)</span>
-            </div>
-
-        </div>
-
+    <div class="semaforo">
+        <div class="luz rojo"></div>
+        <div class="luz amarillo"></div>
+        <div class="luz verde"></div>
     </div>
 
-</body>
+    <!-- Usa un PNG sin fondo -->
+    <img src="m1r.png" class="carro">
 
+</div>
+
+</body>
 </html>
